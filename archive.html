@@ -1,12 +1,14 @@
----
-layout: default
-title: "文章归档"
----
-<ul>
-  {% for post in site.posts %}
-  <li>
-    <a href="{{ post.url }}">{{ post.title }}</a>
-    ({{ post.date | date: "%Y-%m-%d" }})
-  </li>
-  {% endfor %}
-</ul>
+{% for post in site.posts %}
+  {% assign currentdate = post.date | date: "%Y" %}
+  {% if currentdate != date %}
+    {% unless forloop.first %}</ul>{% endunless %}
+    <h2>{{ currentdate }}</h2>
+    <ul>
+    {% assign date = currentdate %}
+  {% endif %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+      ({{ post.date | date: "%Y-%m-%d" }})
+    </li>
+  {% if forloop.last %}</ul>{% endif %}
+{% endfor %}
