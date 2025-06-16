@@ -1,0 +1,7 @@
+title: "阿利亚的技术博客"
+theme: minima
+repository: aliya981/aliya981.github.io  # 已正确配置
+plugins:
+  - jekyll-feed  # 仅保留必要插件
+# _config.yml 中添加
+future: true  # 显示未来日期的文章
